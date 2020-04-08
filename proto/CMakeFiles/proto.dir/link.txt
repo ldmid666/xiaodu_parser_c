@@ -1,0 +1,2 @@
+/usr/bin/ar qc libproto.a  CMakeFiles/proto.dir/parser.grpc-c.c.o CMakeFiles/proto.dir/parser.grpc-c.service.c.o
+/usr/bin/ranlib libproto.a
