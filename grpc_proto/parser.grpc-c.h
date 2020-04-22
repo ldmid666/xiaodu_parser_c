@@ -48,13 +48,15 @@ typedef struct _Parser__UpRsp parser__UpRsp;
 struct  _Parser__DownReq
 {
   ProtobufCMessage base;
+  char *id;
   char *name;
-  protobuf_c_boolean has_payload;
-  ProtobufCBinaryData payload;
+  char *kind;
+  char *field;
+  char *val;
 };
 #define PARSER__DOWN_REQ__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&parser__down_req__descriptor) \
-    , NULL, 0, {0,NULL} }
+    , NULL, NULL, NULL, NULL, NULL }
 
 
 /*
@@ -63,13 +65,15 @@ struct  _Parser__DownReq
 struct  _Parser__DownRsp
 {
   ProtobufCMessage base;
+  char *id;
   char *name;
   protobuf_c_boolean has_payload;
   ProtobufCBinaryData payload;
+  char *err;
 };
 #define PARSER__DOWN_RSP__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&parser__down_rsp__descriptor) \
-    , NULL, 0, {0,NULL} }
+    , NULL, NULL, 0, {0,NULL}, NULL }
 
 
 /*
@@ -97,13 +101,14 @@ struct  _Parser__UpRsp
   ProtobufCMessage base;
   char *id;
   char *name;
-  protobuf_c_boolean has_payload;
-  ProtobufCBinaryData payload;
+  char *kind;
+  char *field;
+  char *val;
   char *err;
 };
 #define PARSER__UP_RSP__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&parser__up_rsp__descriptor) \
-    , NULL, NULL, 0, {0,NULL}, NULL }
+    , NULL, NULL, NULL, NULL, NULL, NULL }
 
 
 /* Parser__DownReq methods */

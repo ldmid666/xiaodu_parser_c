@@ -13,14 +13,19 @@ service Parser {
 
 //客户端发送给服务端
 message DownReq {
-    string name = 1;
-    bytes payload=2;
+    string  ID  = 1;
+    string name = 2;
+    string kind = 3;
+    string field=4;
+    string val = 5;
 }
 
 //服务端返回给客户端
 message DownRsp {
-    string name = 1;
-    bytes payload=2;
+    string  ID  = 1;
+    string name = 2;
+    bytes payload=3;
+    string err = 4;
 }
 
 //客户端发送给服务端
@@ -33,8 +38,10 @@ message UpReq {
 
 //服务端返回给客户端
 message UpRsp {
-    string ID  = 1;
+    string  ID  = 1;
     string name = 2;
-    bytes payload=3;
-    string err = 4;
+    string kind = 3;
+    string field=4;
+    string val = 5;
+    string err = 6;
 }

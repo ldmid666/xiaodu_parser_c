@@ -187,11 +187,23 @@ void   parser__up_rsp__free_unpacked
   assert(message->base.descriptor == &parser__up_rsp__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor parser__down_req__field_descriptors[2] =
+static const ProtobufCFieldDescriptor parser__down_req__field_descriptors[5] =
 {
   {
-    "name",
+    "ID",
     1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownReq, id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "name",
+    2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
@@ -202,12 +214,36 @@ static const ProtobufCFieldDescriptor parser__down_req__field_descriptors[2] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "payload",
-    2,
+    "kind",
+    3,
     PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Parser__DownReq, has_payload),
-    offsetof(Parser__DownReq, payload),
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownReq, kind),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "field",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownReq, field),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "val",
+    5,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownReq, val),
     NULL,
     NULL,
     0,             /* flags */
@@ -215,13 +251,16 @@ static const ProtobufCFieldDescriptor parser__down_req__field_descriptors[2] =
   },
 };
 static const unsigned parser__down_req__field_indices_by_name[] = {
-  0,   /* field[0] = name */
-  1,   /* field[1] = payload */
+  0,   /* field[0] = ID */
+  3,   /* field[3] = field */
+  2,   /* field[2] = kind */
+  1,   /* field[1] = name */
+  4,   /* field[4] = val */
 };
 static const ProtobufCIntRange parser__down_req__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor parser__down_req__descriptor =
 {
@@ -231,18 +270,30 @@ const ProtobufCMessageDescriptor parser__down_req__descriptor =
   "Parser__DownReq",
   "parser",
   sizeof(Parser__DownReq),
-  2,
+  5,
   parser__down_req__field_descriptors,
   parser__down_req__field_indices_by_name,
   1,  parser__down_req__number_ranges,
   (ProtobufCMessageInit) parser__down_req__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor parser__down_rsp__field_descriptors[2] =
+static const ProtobufCFieldDescriptor parser__down_rsp__field_descriptors[4] =
 {
   {
-    "name",
+    "ID",
     1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownRsp, id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "name",
+    2,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
@@ -254,7 +305,7 @@ static const ProtobufCFieldDescriptor parser__down_rsp__field_descriptors[2] =
   },
   {
     "payload",
-    2,
+    3,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_BYTES,
     offsetof(Parser__DownRsp, has_payload),
@@ -264,15 +315,29 @@ static const ProtobufCFieldDescriptor parser__down_rsp__field_descriptors[2] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "err",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__DownRsp, err),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned parser__down_rsp__field_indices_by_name[] = {
-  0,   /* field[0] = name */
-  1,   /* field[1] = payload */
+  0,   /* field[0] = ID */
+  3,   /* field[3] = err */
+  1,   /* field[1] = name */
+  2,   /* field[2] = payload */
 };
 static const ProtobufCIntRange parser__down_rsp__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 4 }
 };
 const ProtobufCMessageDescriptor parser__down_rsp__descriptor =
 {
@@ -282,7 +347,7 @@ const ProtobufCMessageDescriptor parser__down_rsp__descriptor =
   "Parser__DownRsp",
   "parser",
   sizeof(Parser__DownRsp),
-  2,
+  4,
   parser__down_rsp__field_descriptors,
   parser__down_rsp__field_indices_by_name,
   1,  parser__down_rsp__number_ranges,
@@ -366,7 +431,7 @@ const ProtobufCMessageDescriptor parser__up_req__descriptor =
   (ProtobufCMessageInit) parser__up_req__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor parser__up_rsp__field_descriptors[4] =
+static const ProtobufCFieldDescriptor parser__up_rsp__field_descriptors[6] =
 {
   {
     "ID",
@@ -393,12 +458,36 @@ static const ProtobufCFieldDescriptor parser__up_rsp__field_descriptors[4] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "payload",
+    "kind",
     3,
     PROTOBUF_C_LABEL_OPTIONAL,
-    PROTOBUF_C_TYPE_BYTES,
-    offsetof(Parser__UpRsp, has_payload),
-    offsetof(Parser__UpRsp, payload),
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__UpRsp, kind),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "field",
+    4,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__UpRsp, field),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "val",
+    5,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Parser__UpRsp, val),
     NULL,
     NULL,
     0,             /* flags */
@@ -406,7 +495,7 @@ static const ProtobufCFieldDescriptor parser__up_rsp__field_descriptors[4] =
   },
   {
     "err",
-    4,
+    6,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
@@ -419,14 +508,16 @@ static const ProtobufCFieldDescriptor parser__up_rsp__field_descriptors[4] =
 };
 static const unsigned parser__up_rsp__field_indices_by_name[] = {
   0,   /* field[0] = ID */
-  3,   /* field[3] = err */
+  5,   /* field[5] = err */
+  3,   /* field[3] = field */
+  2,   /* field[2] = kind */
   1,   /* field[1] = name */
-  2,   /* field[2] = payload */
+  4,   /* field[4] = val */
 };
 static const ProtobufCIntRange parser__up_rsp__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor parser__up_rsp__descriptor =
 {
@@ -436,7 +527,7 @@ const ProtobufCMessageDescriptor parser__up_rsp__descriptor =
   "Parser__UpRsp",
   "parser",
   sizeof(Parser__UpRsp),
-  4,
+  6,
   parser__up_rsp__field_descriptors,
   parser__up_rsp__field_indices_by_name,
   1,  parser__up_rsp__number_ranges,

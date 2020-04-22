@@ -1,0 +1,49 @@
+syntax = "proto3";  //指定版本，必须要写（proto3、proto2）  
+package proto;
+
+enum Category {
+    CMD = 0;
+    CONFIG = 1;
+};
+
+enum Device {
+    LAMP = 0;
+    HEATER = 1;
+};
+enum Operation {
+   OFF  = 0;
+   ON  = 1;
+}
+
+
+//message是固定的。UserInfo是类名，可以随意指定，符合规范即可
+message UplinkFrame{
+    int32 FrameType = 1;   //消息
+    string DevName = 2;     // 这个设备类型可以不传递给终端
+    string DevId = 3;       //这个设备id可以不传递给终端
+    uint32 FrameNum = 4;      //消息计数
+    uint32 Port = 5;      //端口
+    bytes PhyPayload = 6;
+    uint32 UplinkId=7;
+
+}
+
+message DownlinkFrame{
+    int32 FrameType = 1;   //消息
+    string DevName = 2; // 这个设备类型可以不传递给终端
+    string DevId = 3;  //这个设备id可以不传递给终端
+    uint32 FrameNum = 4;      //消息计数
+    uint32 Port = 5;
+    bytes PhyPayload=6;
+    uint32 DownlinkId=7;
+
+}
+
+message Payload{
+    uint32 kind = 1;   //种类
+    uint32 key = 2; //字段
+    bytes val=3;      //值
+}
+
+
+
